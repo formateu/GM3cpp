@@ -11,14 +11,13 @@
 #include <stdlib.h>
 
 #define ROTL32(x,y)	_rotl(x,y)
-#define ROTL64(x,y)	_rotl64(x,y)
 
 // Other compilers
 
 #else	// defined(_MSC_VER)
 #define    FORCE_INLINE inline __attribute__((always_inline))
 
-int32_t rotl32(int32_t x, int8_t r) {
+inline int32_t rotl32(int32_t x, int8_t r) {
     return (x << r) | static_cast<int32_t>((static_cast<uint32_t>(x) >> (32 - r)));
 }
 

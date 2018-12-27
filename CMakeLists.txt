@@ -7,8 +7,7 @@ include_directories(.)
 
 add_executable(guava_murmurhash3_cpp
         Murmur3_32.cpp
-        Murmur3_32.hpp
         Murmur3_128.cpp
-        Murmur3_128.hpp
+        ByteBuffer.cpp
         main.cpp)
 
