@@ -1,5 +1,5 @@
-#ifndef GUAVA_MURMURHASH3_CPP_MURMUR3_32_HPP
-#define GUAVA_MURMURHASH3_CPP_MURMUR3_32_HPP
+#ifndef MURMUR3_32_HPP
+#define MURMUR3_32_HPP
 
 #include <cstdint>
 #include <string_view>
@@ -77,4 +77,4 @@ private:
 };
 
 
-#endif //GUAVA_MURMURHASH3_CPP_MURMUR3_32_HPP
+#endif // MURMUR3_32_HPP
