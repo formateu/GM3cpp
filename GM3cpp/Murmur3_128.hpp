@@ -13,6 +13,8 @@
 
 #include "ByteBuffer.hpp"
 
+namespace GM3cpp {
+
 class Murmur3_128 {
 public:
     Murmur3_128(int32_t seed);
@@ -52,5 +54,6 @@ protected:
     inline void munch();
 };
 
+} // namespace GM3cpp
 
 #endif // MURMUR3_128_HPP

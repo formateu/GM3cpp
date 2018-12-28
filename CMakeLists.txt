@@ -2,8 +2,11 @@ cmake_minimum_required(VERSION 3.13)
 project(GM3cpp)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -ggdb -Wall -Wextra --coverage")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
 
-include_directories(include)
+
+include_directories(GM3cpp)
 
 add_library(GM3cpp SHARED
         src/Murmur3_32.cpp

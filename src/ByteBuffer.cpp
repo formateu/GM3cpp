@@ -3,7 +3,9 @@
 #include <algorithm>
 #include <cstring>
 
-ByteBuffer::ByteBuffer() : pos_(0), buffer_{}, limit_(buffer_.size() - 1) {}
+namespace GM3cpp {
+
+ByteBuffer::ByteBuffer() : buffer_{}, pos_(0), limit_(buffer_.size() - 1) {}
 
 int64_t ByteBuffer::getLong() {
     int64_t result{};
@@ -35,3 +37,5 @@ void ByteBuffer::reset() {
     pos_ = 0;
     limit_ = 0;
 }
+
+} //namespace GM3cpp

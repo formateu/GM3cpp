@@ -28,6 +28,8 @@ inline int64_t rotl64(int64_t x, int8_t r) {
 #define    ROTL32(x, y)    rotl32(x,y)
 #endif // !defined(_MSC_VER)
 
+namespace GM3cpp {
+
 Murmur3_128::Murmur3_128(int32_t seed) : seed_(seed), chunksize_(16), h1_(seed), h2_(seed), length_(0) {}
 
 void Murmur3_128::putUnencodedChars(std::string_view sv) {
@@ -98,33 +100,46 @@ void Murmur3_128::processRemaining() {
     switch (buffer_.remaining()) {
         case 7:
             k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[6]))) << 48;
+            [[fallthrough]];
         case 6:
             k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[5]))) << 40;
+            [[fallthrough]];
         case 5:
             k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[4]))) << 32;
+            [[fallthrough]];
         case 4:
             k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[3]))) << 24;
+            [[fallthrough]];
         case 3:
             k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[2]))) << 16;
+            [[fallthrough]];
         case 2:
             k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[1]))) << 8;
+            [[fallthrough]];
         case 1:
             k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[0])));
             break;
         case 15:
             k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[14]))) << 48;
+            [[fallthrough]];
         case 14:
             k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[13]))) << 40;
+            [[fallthrough]];
         case 13:
             k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[12]))) << 32;
+            [[fallthrough]];
         case 12:
             k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[11]))) << 24;
+            [[fallthrough]];
         case 11:
             k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[10]))) << 16;
+            [[fallthrough]];
         case 10:
             k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[9]))) << 8;
+            [[fallthrough]];
         case 9:
             k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[8])));
+            [[fallthrough]];
         case 8:
             k1 ^= static_cast<int64_t>(buffer_.getLong());
             break;
@@ -174,3 +189,5 @@ void Murmur3_128::munch() {
 
     buffer_.compact();
 }
+
+} //namespace GM3cpp

@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <array>
 
+namespace GM3cpp {
+
 class ByteBuffer {
 public:
     ByteBuffer();
@@ -35,6 +37,8 @@ private:
     std::size_t pos_;
     std::size_t limit_;
 };
+
+} // namespace GM3cpp
 
 
 #endif // ByteBuffer_HPP

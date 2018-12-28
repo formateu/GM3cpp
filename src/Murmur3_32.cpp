@@ -28,6 +28,8 @@ inline int32_t rotl32(int32_t x, int8_t r) {
 #define    ROTL32(x, y)    rotl32(x,y)
 #endif // !defined(_MSC_VER)
 
+namespace GM3cpp {
+
 Murmur3_32::Murmur3_32() : seed_(0), h1_(0), length_(0), buffer_(0), shift_(0) {}
 
 void Murmur3_32::putUnencodedChars(std::string_view sv) {
@@ -92,3 +94,5 @@ int32_t Murmur3_32::fmix(int32_t h1, int32_t length) {
 
     return h1;
 }
+
+} //namespace GM3cpp

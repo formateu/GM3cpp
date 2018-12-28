@@ -8,6 +8,8 @@
 #include <cstdint>
 #include <string_view>
 
+namespace GM3cpp {
+
 class Murmur3_32 {
 public:
     Murmur3_32();
@@ -36,5 +38,6 @@ protected:
     inline static int32_t fmix(int32_t h1, int32_t length);
 };
 
+} // namespace GM3cpp
 
 #endif // MURMUR3_32_HPP
