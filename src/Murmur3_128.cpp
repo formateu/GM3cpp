@@ -66,6 +66,13 @@ int64_t Murmur3_128::makeHash() {
     return h1_;
 }
 
+void Murmur3_128::reset() {
+    buffer_.reset();
+    h1_ = 0;
+    h2_ = 0;
+    length_ = 0;
+}
+
 void Murmur3_128::process() {
     int64_t k1 = buffer_.getLong();
     int64_t k2 = buffer_.getLong();

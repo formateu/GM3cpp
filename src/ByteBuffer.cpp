@@ -29,3 +29,9 @@ void ByteBuffer::compact() {
     pos_ = remaining();
     limit_ = buffer_.size() - 1;
 }
+
+void ByteBuffer::reset() {
+    buffer_.fill('\0');
+    pos_ = 0;
+    limit_ = 0;
+}

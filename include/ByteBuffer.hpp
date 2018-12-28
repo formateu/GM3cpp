@@ -28,6 +28,8 @@ public:
 
     std::size_t limit() const { return limit_; }
 
+    void reset();
+
 private:
     std::array<char, 24> buffer_;
     std::size_t pos_;

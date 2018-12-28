@@ -18,7 +18,9 @@ public:
 
     int32_t hash();
 
-private:
+    void reset();
+
+protected:
     int32_t seed_;
     int32_t h1_;
     int32_t length_;

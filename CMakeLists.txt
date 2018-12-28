@@ -1,21 +1,23 @@
 cmake_minimum_required(VERSION 3.13)
-project(guava_murmurhash3_cpp)
+project(GM3cpp)
 
 set(CMAKE_CXX_STANDARD 17)
 
 include_directories(include)
 
-add_library(GM3cpp
+add_library(GM3cpp SHARED
         src/Murmur3_32.cpp
         src/Murmur3_128.cpp
         src/ByteBuffer.cpp)
 
-add_executable(test_GM3cpp
-    tests/test_main.cpp
-        tests/test_Murmur3_32.cpp
+add_executable(examples
+        EXCLUDE_FROM_ALL
+        examples/test_main.cpp
+        examples/test_Murmur3_32.cpp
+        examples/test_Murmur3_128.cpp
         )
 
-target_link_libraries(test_GM3cpp
+target_link_libraries(examples
         ${BOOST_UNIT_TEST_FRAMEWORK_LIBRARY}
         GM3cpp
         )

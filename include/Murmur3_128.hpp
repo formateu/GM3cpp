@@ -17,13 +17,15 @@ class Murmur3_128 {
 public:
     Murmur3_128(int32_t seed);
 
-    inline void putUnencodedChars(std::string_view sv);
+    void putUnencodedChars(std::string_view sv);
 
     inline void putChar(char base);
 
     int64_t hash();
 
     int64_t makeHash();
+
+    void reset();
 
 protected:
     int32_t seed_; // = -593145649

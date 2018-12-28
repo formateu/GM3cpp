@@ -46,6 +46,13 @@ int32_t Murmur3_32::hash() {
     return fmix(h1_, length_);
 }
 
+void Murmur3_32::reset() {
+    h1_ = 0;
+    length_ = 0;
+    buffer_ = 0;
+    shift_ = 0;
+}
+
 void Murmur3_32::update(int32_t nBytes, int64_t update) {
     buffer_ |= (update & 4294967295L) << shift_;
     shift_ += nBytes * 8;
