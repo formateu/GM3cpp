@@ -30,7 +30,7 @@ inline int32_t rotl32(int32_t x, int8_t r) {
 
 namespace GM3cpp {
 
-Murmur3_32::Murmur3_32() : seed_(0), h1_(0), length_(0), buffer_(0), shift_(0) {}
+Murmur3_32::Murmur3_32(int32_t seed) : seed_(seed), h1_(0), length_(0), buffer_(0), shift_(0) {}
 
 void Murmur3_32::putUnencodedChars(std::string_view sv) {
     for (auto base : sv) {
@@ -82,7 +82,6 @@ int32_t Murmur3_32::mixK1(int32_t k1) {
 
     return k1;
 }
-
 
 int32_t Murmur3_32::fmix(int32_t h1, int32_t length) {
     h1 ^= length;

@@ -12,7 +12,7 @@ namespace GM3cpp {
 
 class Murmur3_32 {
 public:
-    Murmur3_32();
+    Murmur3_32(int32_t seed);
 
     void putUnencodedChars(std::string_view sv);
 
