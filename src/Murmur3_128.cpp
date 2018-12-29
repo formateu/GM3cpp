@@ -21,8 +21,8 @@
 #else	// defined(_MSC_VER)
 #define    FORCE_INLINE inline __attribute__((always_inline))
 
-inline int64_t rotl64(int64_t x, int8_t r) {
-    return (x << r) | (int64_t) ((uint64_t) x >> (64 - r));
+inline int64_t rotl64(int64_t x, uint8_t r) {
+    return (x << r) | (int64_t) ((uint64_t) x >> (64U - r));
 }
 
 #define    ROTL32(x, y)    rotl32(x,y)
@@ -99,43 +99,43 @@ void Murmur3_128::processRemaining() {
     length_ += buffer_.remaining();
     switch (buffer_.remaining()) {
         case 7:
-            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[6]))) << 48;
+            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[6]))) << 48U;
             [[fallthrough]];
         case 6:
-            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[5]))) << 40;
+            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[5]))) << 40U;
             [[fallthrough]];
         case 5:
-            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[4]))) << 32;
+            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[4]))) << 32U;
             [[fallthrough]];
         case 4:
-            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[3]))) << 24;
+            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[3]))) << 24U;
             [[fallthrough]];
         case 3:
-            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[2]))) << 16;
+            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[2]))) << 16U;
             [[fallthrough]];
         case 2:
-            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[1]))) << 8;
+            k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[1]))) << 8U;
             [[fallthrough]];
         case 1:
             k1 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[0])));
             break;
         case 15:
-            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[14]))) << 48;
+            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[14]))) << 48U;
             [[fallthrough]];
         case 14:
-            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[13]))) << 40;
+            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[13]))) << 40U;
             [[fallthrough]];
         case 13:
-            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[12]))) << 32;
+            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[12]))) << 32U;
             [[fallthrough]];
         case 12:
-            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[11]))) << 24;
+            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[11]))) << 24U;
             [[fallthrough]];
         case 11:
-            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[10]))) << 16;
+            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[10]))) << 16U;
             [[fallthrough]];
         case 10:
-            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[9]))) << 8;
+            k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[9]))) << 8U;
             [[fallthrough]];
         case 9:
             k2 ^= static_cast<int64_t>(static_cast<int32_t>((buffer_[8])));
@@ -150,17 +150,17 @@ void Murmur3_128::processRemaining() {
 }
 
 int64_t Murmur3_128::fmix64(int64_t k) {
-    k ^= (int64_t) ((uint64_t) k >> 33);
+    k ^= (int64_t) ((uint64_t) k >> 33U);
     k *= -49064778989728563L;
-    k ^= (int64_t) ((uint64_t) k >> 33);
+    k ^= (int64_t) ((uint64_t) k >> 33U);
     k *= -4265267296055464877L;
-    k ^= (int64_t) ((uint64_t) k >> 33);
+    k ^= (int64_t) ((uint64_t) k >> 33U);
     return k;
 }
 
 int64_t Murmur3_128::mixK1(int64_t k1) {
     k1 *= -8663945395140668459L;
-    k1 = rotl64(k1, 31);
+    k1 = rotl64(k1, 31U);
     k1 *= 5545529020109919103L;
 
     return k1;
@@ -168,7 +168,7 @@ int64_t Murmur3_128::mixK1(int64_t k1) {
 
 int64_t Murmur3_128::mixK2(int64_t k2) {
     k2 *= 5545529020109919103L;
-    k2 = rotl64(k2, 33);
+    k2 = rotl64(k2, 33U);
     k2 *= -8663945395140668459L;
 
     return k2;

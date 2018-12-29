@@ -9,7 +9,7 @@ BOOST_AUTO_TEST_SUITE(TestMurmur3_32)
 BOOST_AUTO_TEST_CASE(SimpleHash) {
     // Given default initialized Murmur3_32 object (seed == 0)
     // and some string with view
-    GM3cpp::Murmur3_32 hasher;
+    GM3cpp::Murmur3_32 hasher{0U};
     std::string s = "ACTGCACCCTG";
     std::string_view sv{s};
 

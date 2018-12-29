@@ -21,8 +21,8 @@
 #else	// defined(_MSC_VER)
 #define    FORCE_INLINE inline __attribute__((always_inline))
 
-inline int32_t rotl32(int32_t x, int8_t r) {
-    return (x << r) | static_cast<int32_t>((static_cast<uint32_t>(x) >> (32 - r)));
+inline int32_t rotl32(int32_t x, uint8_t r) {
+    return (x << r) | static_cast<int32_t>((static_cast<uint32_t>(x) >> (32U - r)));
 }
 
 #define    ROTL32(x, y)    rotl32(x,y)
@@ -62,14 +62,14 @@ void Murmur3_32::update(int32_t nBytes, int64_t update) {
 
     if (shift_ >= 32) {
         h1_ = mixH1(h1_, mixK1(static_cast<int32_t>(buffer_)));
-        buffer_ = (int64_t) ((uint64_t) buffer_ >> 32);
+        buffer_ = (int64_t) ((uint64_t) buffer_ >> 32U);
         shift_ -= 32;
     }
 }
 
 int32_t Murmur3_32::mixH1(int32_t h1, int32_t k1) {
     h1 ^= k1;
-    h1 = rotl32(h1, 13);
+    h1 = rotl32(h1, 13U);
     h1 = h1 * 5 + -430675100;
 
     return h1;
@@ -77,7 +77,7 @@ int32_t Murmur3_32::mixH1(int32_t h1, int32_t k1) {
 
 int32_t Murmur3_32::mixK1(int32_t k1) {
     k1 *= -862048943;
-    k1 = rotl32(k1, 15);
+    k1 = rotl32(k1, 15U);
     k1 *= 461845907;
 
     return k1;
@@ -85,11 +85,11 @@ int32_t Murmur3_32::mixK1(int32_t k1) {
 
 int32_t Murmur3_32::fmix(int32_t h1, int32_t length) {
     h1 ^= length;
-    h1 ^= (int32_t) ((uint32_t) h1 >> 16);
+    h1 ^= (int32_t) ((uint32_t) h1 >> 16U);
     h1 *= -2048144789;
-    h1 ^= (int32_t) ((uint32_t) h1 >> 13);
+    h1 ^= (int32_t) ((uint32_t) h1 >> 13U);
     h1 *= -1028477387;
-    h1 ^= (int32_t) ((uint32_t) h1 >> 16);
+    h1 ^= (int32_t) ((uint32_t) h1 >> 16U);
 
     return h1;
 }
